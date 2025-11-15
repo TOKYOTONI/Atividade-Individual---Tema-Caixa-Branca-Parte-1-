@@ -18,20 +18,20 @@ public class Main {
             conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/test", // troque 'test' pelo nome do seu banco
                 "root", // usuário
-                "1234"  // senha
+                "#123"  // **** importante collocar a senha que utillizou no mysql serverr
             );
 
             System.out.println("✅ Conexão bem-sucedida!");
 
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM usuarios"); // troque 'usuarios' pelo nome da sua tabela
+            rs = st.executeQuery("SELECT * FROM usuarios"); // troque 'usuarios' pelo nome da sua tabela que deseja ver
 
             while (rs.next()) {
                 System.out.println("ID: " + rs.getInt("id") + " | Nome: " + rs.getString("nome"));
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(); // imprime o erro que deu
         } finally {
             try { if (rs != null) rs.close(); } catch (Exception e) {}
             try { if (st != null) st.close(); } catch (Exception e) {}
